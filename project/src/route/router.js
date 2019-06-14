@@ -1,25 +1,45 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../pages/Home.vue'
+import pageList from './pageList'
 
 Vue.use(Router)
+
+let routes = [];
+let defaultPage = '';
+let pageNames = Object.keys(pageList);
+let pushRoute = (name, component) => {
+    routes.push({
+        path: `/${name}`,
+        name: name,
+        component: component
+    })
+}
+
+pageNames.forEach((name, index) => {
+    let pageName;
+    if (pageList[name].subPages) {
+        let subPageNames = Object.keys(pageList[name].subPages);
+        let subPages = pageList[name].subPages;
+        subPageNames.forEach((name, index) => {
+            (index === 0) && (pageName = name);
+            pushRoute(name, subPages[name].component);
+        })
+    } else {
+        (index === 0) && (pageName = name);
+        pushRoute(name, pageList[name].component);
+    }
+    (index === 0) && (defaultPage = pageName);
+})
+
+routes.push({
+    path: '/',
+    redirect: `/${defaultPage}`
+})
+
+console.log(routes);
 
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes: [{
-            path: '/',
-            name: 'home',
-            component: Home
-        },
-        {
-            path: '/about',
-            name: 'about',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () =>
-                import ( /* webpackChunkName: "about" */ '../pages/About.vue')
-        }
-    ]
+    routes: routes
 })

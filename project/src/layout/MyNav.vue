@@ -10,15 +10,19 @@
         <router-link to="/">首页</router-link>
       </el-menu-item>
       <el-menu-item index="2">
-        <router-link to="/about">详情</router-link>
+        <router-link to="/information">详情</router-link>
       </el-menu-item>
       <el-menu-item index="3">
-        <a href="" target="_blank">关于</a>
+        <router-link to="/about">关于</router-link>
       </el-menu-item>
       <el-submenu index="4">
         <template slot="title">更多</template>
-        <el-menu-item index="4-1">设置</el-menu-item>
-        <el-menu-item index="4-2">其他</el-menu-item>
+        <el-menu-item index="4-1">
+          <router-link to="/setting">设置</router-link>
+        </el-menu-item>
+        <el-menu-item index="4-2">
+          <router-link to="/other">其他</router-link>
+        </el-menu-item>
       </el-submenu>
     </el-menu>
   </div>
