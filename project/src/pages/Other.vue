@@ -1,6 +1,6 @@
 <template>
    <div class="other">
-       This is other page.
+      <h1>This is other page.</h1>
    </div>
 </template>
 

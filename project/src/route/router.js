@@ -17,12 +17,12 @@ let pushRoute = (name, component) => {
 
 pageNames.forEach((name, index) => {
     let pageName;
-    if (pageList[name].subPages) {
-        let subPageNames = Object.keys(pageList[name].subPages);
-        let subPages = pageList[name].subPages;
-        subPageNames.forEach((name, index) => {
+    if (pageList[name].subpages) {
+        let subpageNames = Object.keys(pageList[name].subpages);
+        let subpages = pageList[name].subpages;
+        subpageNames.forEach((name, index) => {
             (index === 0) && (pageName = name);
-            pushRoute(name, subPages[name].component);
+            pushRoute(name, subpages[name].component);
         })
     } else {
         (index === 0) && (pageName = name);

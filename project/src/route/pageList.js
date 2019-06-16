@@ -23,7 +23,8 @@ const pageList = {
     },
     more: {
         title: '更多',
-        subPages: {
+        name: 'more',
+        subpages: {
             setting: {
                 title: '设置',
                 name: 'setting',

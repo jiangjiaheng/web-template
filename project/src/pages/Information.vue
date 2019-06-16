@@ -1,6 +1,6 @@
 <template>
    <div class="info">
-       This is information page.
+       <h1>This is information page.</h1>
    </div>
 </template>
 

@@ -5,37 +5,39 @@
       class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
+      :router="routerOpen"
     >
-      <el-menu-item index="1">
-        <router-link to="/">首页</router-link>
-      </el-menu-item>
-      <el-menu-item index="2">
-        <router-link to="/information">详情</router-link>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <router-link to="/about">关于</router-link>
-      </el-menu-item>
-      <el-submenu index="4">
-        <template slot="title">更多</template>
-        <el-menu-item index="4-1">
-          <router-link to="/setting">设置</router-link>
-        </el-menu-item>
-        <el-menu-item index="4-2">
-          <router-link to="/other">其他</router-link>
+    <template v-for="page in pages">
+      <el-submenu :index="page.name" :key="page.id" v-if="page.subpages">
+        <template slot="title">{{page.title}}</template>
+        <el-menu-item v-for="subpage in page.subpages" :key="subpage.id" :index="subpage.name">
+          {{subpage.title}}
         </el-menu-item>
       </el-submenu>
+      <el-menu-item :index="page.name" :key="page.id" v-else>
+        {{page.title}}
+      </el-menu-item>
+    </template>
     </el-menu>
   </div>
 </template>
 
 <script>
+import pageList from '@/route/pageList'
+
 export default {
   name: "",
   components: {},
   data() {
     return {
-      activeIndex: "1"
+      pages:pageList,
+      routerOpen:true
     };
+  },
+  computed: {
+    activeIndex(){
+      return this.$router.app._route.name;
+    }
   },
   methods: {
     handleSelect(key, keyPath) {
