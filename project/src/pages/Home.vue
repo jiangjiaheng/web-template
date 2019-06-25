@@ -12,6 +12,11 @@ export default {
   name: "home",
   components: {
     HelloWorld
+  },
+  created () {
+    this.$api.get('topics', null, r => {
+      console.log(r)
+    })
   }
 };
 </script>
