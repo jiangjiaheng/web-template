@@ -7,6 +7,13 @@
       @select="handleSelect"
       :router="routerOpen"
     >
+    <template>
+      <el-menu-item>
+        <div class="el-menu-title">
+          Web Name
+        </div>
+      </el-menu-item>
+    </template>
     <template v-for="page in pages">
       <el-submenu :index="page.name" :key="page.id" v-if="page.subpages">
         <template slot="title">{{page.title}}</template>
@@ -48,4 +55,9 @@ export default {
 </script>
 
 <style scoped>
+.el-menu-title{
+  font-size: 18px;
+  font-weight: bold;
+  color:#000000;
+}
 </style>
