@@ -1,6 +1,8 @@
 <template>
   <div class="home">
     <h1>This is home page.</h1>
+    <p>{{$store.state.moduleA.testA}}</p>
+    <p>{{$store.state.moduleB.testB}}</p>
   </div>
 </template>
 
