@@ -1,11 +1,29 @@
 const B = {
     namespaced: true,
     state: {
-        testB: 'hello B'
+        count: 2
     },
-    mutations: {},
-    actions: {},
-    getters: {}
+    mutations: {
+        add(state) {
+            state.count++;
+        },
+        sub(state) {
+            state.count--;
+        }
+    },
+    actions: {
+        subAsyn({
+            state,
+            commit
+        }) {
+            setTimeout(() => {
+                commit('sub')
+            })
+        }
+    },
+    getters: {
+        getCount: state => state.count
+    }
 }
 
 export default B

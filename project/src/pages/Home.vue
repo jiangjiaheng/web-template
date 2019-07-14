@@ -1,24 +1,61 @@
 <template>
   <div class="home">
-    <h1>This is home page.</h1>
-    <p>{{$store.state.moduleA.testA}}</p>
-    <p>{{$store.state.moduleB.testB}}</p>
+    <h1>This is A Vuex Demo</h1>
+    <el-row>
+      <el-col :span="12">
+        <div class="grid-content">
+          <rate-card card-name="Demo of Module A" :count-rate="countA" @add="addA" @sub="subA"></rate-card>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="grid-content">
+          <rate-card card-name="Demo of Module B" :count-rate="countB" @add="addB" @sub="subB"></rate-card>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
+import RateCard from "@/components/RateCard.vue";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "home",
   components: {
-    // HelloWorld
+    RateCard
   },
-  created () {
-    this.$api.get('topics', null, r => {
-      console.log(r)
+  created() {
+    this.$api.get("topics", null, r => {
+      console.log(r);
+    });
+  },
+  computed: {
+    ...mapGetters("moduleA", {
+      countA: "getCount"
+    }),
+    ...mapGetters("moduleB", {
+      countB: "getCount"
+    })
+  },
+  methods: {
+    ...mapMutations("moduleA", {
+      addA: "add"
+    }),
+    ...mapActions("moduleA", {
+      subA: "subAsyn"
+    }),
+    ...mapMutations("moduleB", {
+      addB: "add"
+    }),
+    ...mapActions("moduleB", {
+      subB: "subAsyn"
     })
   }
 };
 </script>
+
+<style scoped>
+</style>
+
