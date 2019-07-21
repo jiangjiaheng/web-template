@@ -1,5 +1,6 @@
 // 配置API接口地址
-const root = 'https://cnodejs.org/api/v1'
+// const root = 'https://cnodejs.org/api/v1'
+const root = ''
     // 引用axios
 import axios from 'axios'
 // 自定义判断元素类型JS
@@ -22,15 +23,6 @@ function filterNull(o) {
     }
     return o
 }
-/*
-  接口处理函数
-  这个函数每个项目都是不一样的，我现在调整的是适用于
-  https://cnodejs.org/api/v1 的接口，如果是其他接口
-  需要根据接口的参数进行调整。参考说明文档地址：
-  https://cnodejs.org/topic/5378720ed6e2d16149fa16bd
-  主要是，不同的接口的成功标识和失败提示是不一致的。
-  另外，不同的项目的处理方法也是不一致的，这里出错就是简单的alert
-*/
 
 function apiAxios(method, url, params, success, failure) {
     if (params) {
@@ -45,13 +37,13 @@ function apiAxios(method, url, params, success, failure) {
             withCredentials: false
         })
         .then(function(res) {
-            if (res.data.success === true) {
+            if (res.status === 200) {
                 if (success) {
                     success(res.data)
                 }
             } else {
                 if (failure) {
-                    failure(res.data)
+                    failure(res)
                 } else {
                     window.alert('error: ' + JSON.stringify(res.data))
                 }

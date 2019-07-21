@@ -27,9 +27,7 @@ export default {
     RateCard
   },
   created() {
-    this.$api.get("topics", null, r => {
-      console.log(r);
-    });
+    this.getDataFromApi();
   },
   computed: {
     ...mapGetters("moduleA", {
@@ -51,7 +49,12 @@ export default {
     }),
     ...mapActions("moduleB", {
       subB: "subAsyn"
-    })
+    }),
+    getDataFromApi() {
+      this.$api.get("/data/testData", null, Response => {
+        console.log(Response);
+      });
+    }
   }
 };
 </script>
