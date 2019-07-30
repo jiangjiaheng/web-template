@@ -8,20 +8,20 @@ function toType(obj) {
     return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
 // 参数过滤函数
-function filterNull(o) {
-    for (let key in o) {
-        if (o[key] === null) {
-            delete o[key]
+function filterNull(params) {
+    for (let key in params) {
+        if (params[key] === null) {
+            delete params[key]
         }
-        if (toType(o[key]) === 'string') {
-            o[key] = o[key].trim()
-        } else if (toType(o[key]) === 'object') {
-            o[key] = filterNull(o[key])
-        } else if (toType(o[key]) === 'array') {
-            o[key] = filterNull(o[key])
+        if (toType(params[key]) === 'string') {
+            params[key] = params[key].trim()
+        } else if (toType(params[key]) === 'object') {
+            params[key] = filterNull(params[key])
+        } else if (toType(params[key]) === 'array') {
+            params[key] = filterNull(params[key])
         }
     }
-    return o
+    return params
 }
 
 function apiAxios(method, url, params, success, failure) {
