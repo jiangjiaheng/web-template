@@ -1,6 +1,6 @@
 <template>
    <div class="other">
-      <h1>This is other page.</h1>
+      <h1>I'm sass red</h1>
    </div>
 </template>
 
@@ -14,5 +14,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$color: red;
+
+h1 {
+  color: $color;
+}
 </style>

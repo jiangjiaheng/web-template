@@ -60,11 +60,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$color:red;
+$color: red;
 
-h1{
-  color:$color;
+h1 {
+  color: $color;
 }
-
 </style>
 
