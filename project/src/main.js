@@ -4,8 +4,10 @@ import router from './route/router'
 import store from './store/store'
 import './plugins/element.js'
 import api from './api/api'
+import echarts from 'echarts'
 
 Vue.prototype.$api = api
+Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 
 require('./mock/mock')

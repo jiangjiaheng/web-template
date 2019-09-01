@@ -24,7 +24,7 @@ for (let i = 0; i < 10; i++) { // 可自定义生成的个数
         'Color': Random.color(), // 生成一个颜色随机值
         'Paragraph': Random.paragraph(2, 5), //生成2至5个句子的文本
         'Name': Random.name(), // 生成姓名
-        'Url': Random.url(), // 生成web地址
+        'Url': 'https://github.com/jiangjiaheng/web-template', // 生成web地址
         'Address': Random.province() // 生成地址
     }
     data.push(template)
