@@ -6,8 +6,23 @@ import './plugins/element.js'
 import api from './api/api'
 import echarts from 'echarts'
 
+// echarts 按需引入
+let echarts2 = require('echarts/lib/echarts')
+
+// 引入折线图等组件
+require('echarts/lib/chart/line')
+require('echarts/lib/chart/bar')
+require('echarts/lib/chart/radar')
+
+// 引入提示框和title组件，图例
+require('echarts/lib/component/tooltip')
+require('echarts/lib/component/title')
+require('echarts/lib/component/legend')
+
 Vue.prototype.$api = api
 Vue.prototype.$echarts = echarts
+Vue.prototype.$echarts2 = echarts2
+
 Vue.config.productionTip = false
 
 require('./mock/mock')
