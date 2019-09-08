@@ -52,6 +52,7 @@ export default {
   components: {},
   created() {
     this.getDataFromApi();
+    // this.getDataFromApi2();
   },
   data() {
     return {
@@ -61,15 +62,28 @@ export default {
   },
   methods: {
     getDataFromApi() {
+      this.$ajaxApi.get(
+        "/data/tableData",
+        null,
+        Response => {
+          this.tableData = Response;
+          console.log(Response);
+        },
+        Error => {
+          throw Error;
+        }
+      );
+    },
+    getDataFromApi2() {
       this.$api.get(
         "/data/tableData",
         null,
         Response => {
           this.tableData = Response;
-          console.log(this.tableData);
+          console.log(Response);
         },
         Error => {
-          console.log(Error);
+          throw new Error(Error);
         }
       );
     },

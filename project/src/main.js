@@ -4,6 +4,7 @@ import router from './route/router'
 import store from './store/store'
 import './plugins/element.js'
 import api from './api/api'
+import ajaxApi from './api/ajaxApi'
 import echarts from 'echarts'
 
 // echarts 按需引入
@@ -20,6 +21,7 @@ require('echarts/lib/component/title')
 require('echarts/lib/component/legend')
 
 Vue.prototype.$api = api
+Vue.prototype.$ajaxApi = ajaxApi
 Vue.prototype.$echarts = echarts
 Vue.prototype.$echarts2 = echarts2
 
