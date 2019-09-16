@@ -29,7 +29,7 @@ const ajax = function({
         };
         // error
         const errorHandler = function() {
-            console.error(xhr.statusText);
+            console.error(this.statusText);
         };
         // timeout
         const timeoutHandler = function() {
