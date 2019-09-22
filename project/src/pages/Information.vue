@@ -63,7 +63,7 @@ export default {
   methods: {
     getDataFromApi() {
       this.$ajaxApi.get(
-        "/data/tableData",
+        "/data/tableData", // mock 数据接口
         null,
         Response => {
           this.tableData = Response;

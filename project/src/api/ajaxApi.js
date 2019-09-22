@@ -1,12 +1,14 @@
 // 配置API接口地址
-// const root = 'https://cnodejs.org/api/v1'
 const root = ''
-    // 引用axios
+
+// 引入原生Ajax
 import { ajax } from './ajax'
+
 // 自定义判断元素类型JS
 function toType(obj) {
     return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
+
 // 参数过滤函数
 function filterNull(params) {
     for (let key in params) {
@@ -23,6 +25,8 @@ function filterNull(params) {
     }
     return params
 }
+
+// 封装Ajax接口
 
 function apiAjax(method, url, params, success, failure) {
     if (params) {
