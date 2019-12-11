@@ -13,7 +13,7 @@ const A = {
     },
     actions: {
         subAsyn({
-            state,
+            // state,
             commit
         }) {
             setTimeout(() => {
