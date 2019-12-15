@@ -36,10 +36,10 @@ routes.push({
     redirect: `/${defaultPage}`
 })
 
-console.log(routes);
+// console.log(routes);
 
 export default new Router({
-    mode: 'history',
+    mode: 'hash',
     base: process.env.BASE_URL,
     routes: routes
 })
